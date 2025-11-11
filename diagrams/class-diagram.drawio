@@ -1,0 +1,194 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram id="QMxsO5lQOGHhjDSyM13u" name="Page-1">
+    <mxGraphModel dx="5544" dy="3704" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="node10" value="&lt;p style=&quot;text-align: center; margin: 4px 0px 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; text-align: left;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; margin: 4px 0px 0px;&quot;&gt;&lt;b&gt;Ellipse&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ drawEllipse(ctx, x1, y1, x2, y2): void&lt;br&gt;+ showEllipse(ctx, x1, y1, x2, y2, strokeColor, fillColor, isFilled): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-580" y="670" width="453" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_mV3umanFxhUocmhhigg-2" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.48;entryY=1.002;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-409" y="330" />
+              <mxPoint x="5" y="330" />
+            </Array>
+            <mxPoint x="-409.0000000000001" y="379.38" as="sourcePoint" />
+            <mxPoint x="5.440000000000055" y="219.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;EllipseShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): string&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-529" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="&lt;p style=&quot;text-align: center; margin: 4px 0px 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; text-align: left;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Line&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ drawLine(ctx, x1, y1, x2, y2): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ showLine(ctx, x1, y1, x2, y2, strokeColor): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="670" width="314" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_mV3umanFxhUocmhhigg-3" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-145" y="330" />
+              <mxPoint x="5" y="330" />
+              <mxPoint x="5" y="240" />
+              <mxPoint x="5" y="240" />
+            </Array>
+            <mxPoint x="-144.99666666666667" y="370" as="sourcePoint" />
+            <mxPoint x="5.49" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LineShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ getName(): string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-259" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node9" value="&lt;p style=&quot;text-align: center; margin: 4px 0px 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; text-align: left;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Point&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ drawPoint(ctx, x, y): void&lt;/span&gt;&lt;/p&gt;&amp;nbsp;+ showPoint(ctx, x, y, fillColor&lt;span style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt; background-color: rgb(255, 255, 255); color: rgb(8, 8, 8);&quot;&gt;,&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;strokeColor): void&lt;/span&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="670" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PointShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ getName(): string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="18" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="&lt;p style=&quot;text-align: center; margin: 4px 0px 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; text-align: left;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Rectangle&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ drawRect(ctx, x1, y1, x2, y2): void&lt;br&gt;+ showRect(ctx, x1, y1, x2, y2, strokeColor, fillColor, isFilled): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="690" y="670" width="440" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_mV3umanFxhUocmhhigg-5" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="416" y="330" />
+              <mxPoint x="5" y="330" />
+            </Array>
+            <mxPoint x="416.0133333333333" y="370" as="sourcePoint" />
+            <mxPoint x="5" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;RectangleShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="301" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Shape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;# xs1: number&lt;br&gt;# ys1: number&lt;br&gt;# xs2: number&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;# ys2: number&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;# strokeColor: string&lt;br&gt;# fillColor: string&lt;br&gt;# isFilled: boolean&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ set(x1, y1, x2, y2): void&lt;br&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-140" y="-90" width="303" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="jqd2990-jrI_hcOBla3t-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="node10" target="node10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-1" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="138" y="330" />
+              <mxPoint x="5" y="330" />
+            </Array>
+            <mxPoint x="138" y="371" as="sourcePoint" />
+            <mxPoint x="5" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LineOOShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="570" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CubeShape&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ show(ctx): void&lt;/p&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="370" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-4" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;" parent="1" source="DrdqCGueg-FJxfjQd_TB-2" target="node5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="330" />
+              <mxPoint x="6" y="330" />
+            </Array>
+            <mxPoint x="781.0133333333333" y="470" as="sourcePoint" />
+            <mxPoint x="370" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-5" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="956" y="330" />
+              <mxPoint x="6" y="330" />
+            </Array>
+            <mxPoint x="955.9991743119265" y="370" as="sourcePoint" />
+            <mxPoint x="5.999174311926472" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-8" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" parent="1" source="node0" target="node9" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="138" y="600" />
+              <mxPoint x="484" y="600" />
+            </Array>
+            <mxPoint x="30" y="414.9999999999998" as="sourcePoint" />
+            <mxPoint x="-440" y="606.0769230769229" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-9" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" parent="1" source="node8" target="node6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-150" y="620" />
+              <mxPoint x="10" y="620" />
+            </Array>
+            <mxPoint x="150" y="520" as="sourcePoint" />
+            <mxPoint x="302" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DrdqCGueg-FJxfjQd_TB-10" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" parent="1" target="node10" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-345" y="650" />
+              <mxPoint x="-345" y="650" />
+            </Array>
+            <mxPoint x="-345.0033333333334" y="460" as="sourcePoint" />
+            <mxPoint x="-529.0033333333334" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-1" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" edge="1" parent="1" source="node4" target="node2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="540" />
+              <mxPoint x="970" y="540" />
+            </Array>
+            <mxPoint x="410.05882352941217" y="430" as="sourcePoint" />
+            <mxPoint x="720.0588235294122" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-2" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" edge="1" parent="1" source="DrdqCGueg-FJxfjQd_TB-2" target="node6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="520" />
+              <mxPoint x="70" y="520" />
+            </Array>
+            <mxPoint x="713" y="450" as="sourcePoint" />
+            <mxPoint x="-90" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-3" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="500" />
+              <mxPoint x="-320" y="500" />
+            </Array>
+            <mxPoint x="680.0000000000005" y="460.0000000000002" as="sourcePoint" />
+            <mxPoint x="-320" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-4" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="510" />
+              <mxPoint x="1000" y="510" />
+            </Array>
+            <mxPoint x="1000.0588235294122" y="460" as="sourcePoint" />
+            <mxPoint x="999.9988235294122" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-5" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;endSize=17;dashed=1;" edge="1" parent="1" source="DrdqCGueg-FJxfjQd_TB-3" target="node6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="570" />
+              <mxPoint x="40" y="570" />
+            </Array>
+            <mxPoint x="160" y="450" as="sourcePoint" />
+            <mxPoint x="-50" y="640.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GraphicEditor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- canvasRef: RefObject&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- currentTool: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- isModalOpen: boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- modalContent: ReactNode&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- currentShapeFactory: () =&amp;gt; Shape&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- strokeColor: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- fillColor: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- isFilled: boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- N: number&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ updateTitle(string): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ getMouseCoordinates(e): object&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleMouseDown(e): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleMouseMove(e): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleMouseUp(e): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handlePointSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleLineSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleRectSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleEllipseSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleCubeSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleLineOOSelect(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleClear(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleUndo(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ handleAbout(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="276.5" y="-370" width="289" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="Ys3UXYvNPdG3KjDsICI9-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MyEditor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;-&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;ctx: CanvasRenderingContext2D&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- shapes: Shape[]&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- currentShape: Shape&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- isDrawing: boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- startX: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- startY: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- savedImageData: ImageData&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;- N: number&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ setContext(ctx): void&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ start(shape): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ onLBDown(x, y): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ onMouseMove(x, y): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ onLBUp(x, y): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ onPaint(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;+ clear(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; line-height: 1.6;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ undo(): voi&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;d&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="-210" width="230" height="410" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
