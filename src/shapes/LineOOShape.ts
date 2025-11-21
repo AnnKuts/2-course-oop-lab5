@@ -54,4 +54,14 @@ export class LineOOShape extends Shape implements Line, Ellipse {
   getName(): string {
     return 'LineOO';
   }
+
+  static fromJSON(data: any): LineOOShape {
+    const shape = new LineOOShape();
+    shape.set(data.x1, data.y1, data.x2, data.y2);
+    shape.setStrokeColor(data.strokeColor);
+    shape.setFillColor(data.fillColor);
+    shape.setFilled(data.isFilled);
+    return shape;
+  }
+
 }

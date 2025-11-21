@@ -18,4 +18,10 @@ export class PointShape extends Shape implements Point {
   getName(): string {
     return 'Point';
   }
+
+  static fromJSON(data: any): PointShape {
+    const p = new PointShape(data.x1, data.y1);
+    p.setStrokeColor(data.strokeColor);
+    return p;
+  }
 }

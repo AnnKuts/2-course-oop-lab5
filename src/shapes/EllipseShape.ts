@@ -13,4 +13,15 @@ export class EllipseShape extends Shape implements Ellipse {
   getName(): string {
     return 'Ellipse';
   }
+
+  static fromJSON(data: any): EllipseShape {
+    const e = new EllipseShape();
+    e.set(data.x1, data.y1, data.x2, data.y2);
+    e.setStrokeColor(data.strokeColor);
+    e.setFillColor(data.fillColor);
+    e.setFilled(data.isFilled);
+    return e;
+  }
+
+
 }

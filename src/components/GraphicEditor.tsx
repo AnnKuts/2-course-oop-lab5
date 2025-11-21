@@ -17,6 +17,8 @@ import ModalWindow from './ModalWindow';
 const GraphicEditor: React.FC = () => {
   const N = 111;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   const myTableRef = useRef(new MyTable());
   const [currentTool, setCurrentTool] = useState<string>('Point');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,8 +29,6 @@ const GraphicEditor: React.FC = () => {
   const [fillColor, setFillColor] = useState<string>('#ffff00');
   const [isFilled, setIsFilled] = useState<boolean>(false);
   const [tableData, setTableData] = useState<ShapeData[]>([]);
-
-  // Dragging and resizing state
   const [tablePosition, setTablePosition] = useState({x: window.innerWidth - 540, y: 140});
   const [tableSize, setTableSize] = useState({width: 500, height: 500});
   const [isDragging, setIsDragging] = useState(false);
@@ -57,7 +57,6 @@ const GraphicEditor: React.FC = () => {
     };
   }, []);
 
-  // Mouse move and up handlers for dragging/resizing
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
@@ -93,8 +92,10 @@ const GraphicEditor: React.FC = () => {
   }, [isDragging, isResizing, dragStart, tableSize]);
 
   const handleTableMouseDown = (e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).classList.contains('table-panel-header') ||
-      (e.target as HTMLElement).closest('.table-panel-header')) {
+    if (
+      (e.target as HTMLElement).classList.contains('table-panel-header') ||
+      (e.target as HTMLElement).closest('.table-panel-header')
+    ) {
       setIsDragging(true);
       setDragStart({x: e.clientX - tablePosition.x, y: e.clientY - tablePosition.y});
     }
@@ -183,25 +184,60 @@ const GraphicEditor: React.FC = () => {
     setIsTableOpen(!isTableOpen);
   };
 
+  // ❗ SAVE JSON
+  const handleSaveJSON = () => {
+    const json = Editor.exportToJSON();
+    const blob = new Blob([json], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'shapes.json';
+    a.click();
+  };
+
+  const handleLoadJSONClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleLoadJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const json = event.target?.result as string;
+      Editor.importFromJSON(json);
+
+      myTableRef.current.Clear();
+      Editor.shapes.forEach(s => {
+        myTableRef.current.Add(
+          s.getName(),
+          Math.round(s.xs1),
+          Math.round(s.ys1),
+          Math.round(s.xs2),
+          Math.round(s.ys2)
+        );
+      });
+    };
+
+    reader.readAsText(file);
+  };
+
   const handleAbout = () => {
     const aboutContent = (
       <>
         <h4>Масив</h4>
-        <p>динамічний з обмеженням кількості елементів N = {N}</p>
+        <p>динамічний з обмеженням N = {N}</p>
+
         <h4>Гумовий слід</h4>
-        <p>суцільна лінія чорного кольору</p>
+        <p>чорна пунктирна лінія</p>
+
         <h4>Прямокутник</h4>
-        <p>
-          Увід: по двом протилежним кутам<br/>
-          Відображення: чорний контур з кольоровим заповненням (жовтий)
-        </p>
+        <p>колір заповнення — жовтий</p>
+
         <h4>Еліпс</h4>
-        <p>
-          Увід: від центру до одного з кутів охоплюючого прямокутника<br/>
-          Відображення: чорний контур без заповнення
-        </p>
-        <h4>Позначка поточного типу об'єкту</h4>
-        <p>в меню</p>
+        <p>без заливки</p>
       </>
     );
     setModalContent(aboutContent);
@@ -210,6 +246,16 @@ const GraphicEditor: React.FC = () => {
 
   return (
     <div className="editor-container">
+
+      {/* hidden loader */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".json"
+        style={{display: 'none'}}
+        onChange={handleLoadJSON}
+      />
+
       <div className="top-bar">
         <MenuBar
           currentTool={currentTool}
@@ -224,6 +270,10 @@ const GraphicEditor: React.FC = () => {
           onUndo={handleUndo}
           onTableToggle={handleTableToggle}
           isTableOpen={isTableOpen}
+
+          // NEW:
+          onSaveJSON={handleSaveJSON}
+          onLoadJSON={handleLoadJSONClick}
         />
 
         <Toolbar
@@ -267,14 +317,12 @@ const GraphicEditor: React.FC = () => {
             }}
             onMouseDown={handleTableMouseDown}
           >
-            <div
-              className="table-panel-header"
-              style={{cursor: isDragging ? 'grabbing' : 'grab'}}
-            >
+            <div className="table-panel-header">
               <h3>Objects Table</h3>
               <button className="close-button" onClick={handleTableToggle}>×</button>
             </div>
-            <div className="table-content" style={{maxHeight: `${tableSize.height - 50}px`}}>
+
+            <div className="table-content">
               <table>
                 <thead>
                 <tr>
@@ -300,6 +348,7 @@ const GraphicEditor: React.FC = () => {
                 </tbody>
               </table>
             </div>
+
             <div
               className="resize-handle"
               onMouseDown={handleResizeMouseDown}

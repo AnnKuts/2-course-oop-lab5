@@ -21,4 +21,12 @@ export class RectangleShape extends Shape implements Rectangle {
   getName(): string {
     return 'Rectangle';
   }
+
+  static fromJSON(data: any): RectangleShape {
+    const r = new RectangleShape(data.x1, data.y1, data.x2, data.y2);
+    r.setStrokeColor(data.strokeColor);
+    r.setFillColor(data.fillColor);
+    r.setFilled(data.isFilled);
+    return r;
+  }
 }

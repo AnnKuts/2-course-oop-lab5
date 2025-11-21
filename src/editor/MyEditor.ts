@@ -1,4 +1,5 @@
 import { Shape } from '../shapes/Shape';
+import { ShapeClasses } from "../shapes/ShapeClasses";
 
 export class MyEditor {
   private static instance: MyEditor | null = null;
@@ -63,7 +64,6 @@ export class MyEditor {
       this.shapes.push(this.currentShape);
     }
 
-    // Викликаємо callback для оновлення таблиці
     if (this.onShapeDrawnCallback) {
       const shapeName = this.currentShape.getName();
       this.onShapeDrawnCallback(shapeName, this.startX, this.startY, x, y);
@@ -106,6 +106,42 @@ export class MyEditor {
       this.shapes.pop();
       this.onPaint();
     }
+  }
+
+  importFromJSON(jsonString: string) {
+    const arr = JSON.parse(jsonString);
+
+    this.shapes = [];
+
+    for (const obj of arr) {
+      const Cls = ShapeClasses[obj.type];
+      if (!Cls) continue;
+
+      const shape = Cls.fromJSON(obj);
+      this.shapes.push(shape);
+    }
+    this.onPaint();
+  }
+
+  exportToJSON(): string {
+    return JSON.stringify(this.shapes.map(s => s.toJSON()), null, 2);
+  }
+
+  getShapes(): Shape[] {
+    return [...this.shapes];
+  }
+
+  loadShapes(shapes: Shape[], onShapeDrawn?: (name: string, x1: number, y1: number, x2: number, y2: number) => void) {
+    this.shapes = shapes;
+    
+    if (onShapeDrawn) {
+      for (const shape of shapes) {
+        const json = shape.toJSON();
+        onShapeDrawn(json.type, json.x1, json.y1, json.x2, json.y2);
+      }
+    }
+    
+    this.onPaint();
   }
 }
 

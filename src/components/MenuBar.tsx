@@ -1,5 +1,5 @@
-import type {FC} from 'react';
-import {useState} from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import Button from './Button.tsx';
 
 interface MenuBarProps {
@@ -15,6 +15,8 @@ interface MenuBarProps {
   onUndo: () => void;
   onTableToggle: () => void;
   isTableOpen: boolean;
+  onSaveJSON: () => void;
+  onLoadJSON: () => void;
 }
 
 const MenuBar: FC<MenuBarProps> = ({
@@ -29,7 +31,10 @@ const MenuBar: FC<MenuBarProps> = ({
                                      onLineOOSelect,
                                      onUndo,
                                      onTableToggle,
-                                     isTableOpen
+                                     isTableOpen,
+
+                                     onSaveJSON,
+                                     onLoadJSON
                                    }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
@@ -53,53 +58,11 @@ const MenuBar: FC<MenuBarProps> = ({
     closeMenu();
   };
 
-  const handlePointClick = () => {
-    onPointSelect();
-    closeMenu();
-  };
-
-  const handleLineClick = () => {
-    onLineSelect();
-    closeMenu();
-  };
-
-  const handleRectClick = () => {
-    onRectSelect();
-    closeMenu();
-  };
-
-  const handleEllipseClick = () => {
-    onEllipseSelect();
-    closeMenu();
-  };
-
-  const handleAboutClick = () => {
-    onAbout();
-    closeMenu();
-  };
-
-  const handleCubeClick = () => {
-    onCubeSelect();
-    closeMenu();
-  };
-
-  const handleLineOOClick = () => {
-    onLineOOSelect();
-    closeMenu();
-  };
-
-  const handleUndoClick = () => {
-    onUndo();
-    closeMenu();
-  };
-
-  const handleViewClick = () => {
-    onTableToggle();
-  };
-
   return (
     <>
       <div className="menu-bar">
+
+        {/* FILE MENU */}
         <div className="menu-item">
           <button
             className={`menu-button ${openMenu === 'file' ? 'active' : ''}`}
@@ -108,13 +71,31 @@ const MenuBar: FC<MenuBarProps> = ({
           >
             File
           </button>
+
           {openMenu === 'file' && (
             <div className="dropdown">
               <Button className="dropdown-item" onClick={handleClearClick}>
                 Clear
               </Button>
-              <Button className="dropdown-item" onClick={handleUndoClick}>
+
+              <Button className="dropdown-item" onClick={onUndo}>
                 Undo
+              </Button>
+
+              {/* NEW: SAVE JSON */}
+              <Button className="dropdown-item" onClick={onSaveJSON}>
+                Save JSON
+              </Button>
+
+              {/* NEW: LOAD JSON */}
+              <Button
+                className="dropdown-item"
+                onClick={() => {
+                  onLoadJSON();
+                  closeMenu();
+                }}
+              >
+                Load JSON
               </Button>
             </div>
           )}
@@ -128,41 +109,47 @@ const MenuBar: FC<MenuBarProps> = ({
           >
             Objects
           </button>
+
           {openMenu === 'objects' && (
             <div className="dropdown">
               <Button
                 className={`dropdown-item ${currentTool === 'Point' ? 'selected' : ''}`}
-                onClick={handlePointClick}
+                onClick={() => { onPointSelect(); closeMenu(); }}
               >
                 Point
               </Button>
+
               <Button
                 className={`dropdown-item ${currentTool === 'Line' ? 'selected' : ''}`}
-                onClick={handleLineClick}
+                onClick={() => { onLineSelect(); closeMenu(); }}
               >
                 Line
               </Button>
+
               <Button
                 className={`dropdown-item ${currentTool === 'Rectangle' ? 'selected' : ''}`}
-                onClick={handleRectClick}
+                onClick={() => { onRectSelect(); closeMenu(); }}
               >
                 Rectangle
               </Button>
+
               <Button
                 className={`dropdown-item ${currentTool === 'Ellipse' ? 'selected' : ''}`}
-                onClick={handleEllipseClick}
+                onClick={() => { onEllipseSelect(); closeMenu(); }}
               >
                 Ellipse
               </Button>
+
               <Button
                 className={`dropdown-item ${currentTool === 'Cube' ? 'selected' : ''}`}
-                onClick={handleCubeClick}
+                onClick={() => { onCubeSelect(); closeMenu(); }}
               >
                 Cube
               </Button>
+
               <Button
                 className={`dropdown-item ${currentTool === 'LineOO' ? 'selected' : ''}`}
-                onClick={handleLineOOClick}
+                onClick={() => { onLineOOSelect(); closeMenu(); }}
               >
                 LineOO
               </Button>
@@ -173,7 +160,7 @@ const MenuBar: FC<MenuBarProps> = ({
         <div className="menu-item">
           <button
             className={`menu-button ${isTableOpen ? 'active' : ''}`}
-            onClick={handleViewClick}
+            onClick={onTableToggle}
           >
             View
           </button>
@@ -187,14 +174,16 @@ const MenuBar: FC<MenuBarProps> = ({
           >
             About
           </button>
+
           {openMenu === 'about' && (
             <div className="dropdown">
-              <Button className="dropdown-item" onClick={handleAboutClick}>
+              <Button className="dropdown-item" onClick={() => { onAbout(); closeMenu(); }}>
                 Show info
               </Button>
             </div>
           )}
         </div>
+
       </div>
 
       {openMenu && <div className="menu-overlay" onClick={closeMenu}></div>}

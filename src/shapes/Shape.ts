@@ -22,6 +22,20 @@ export abstract class Shape {
   setFilled(filled: boolean) {
     this.isFilled = filled;
   }
+  
+  toJSON() {
+    return {
+      type: this.getName(),
+      x1: this.xs1,
+      y1: this.ys1,
+      x2: this.xs2,
+      y2: this.ys2,
+      strokeColor: this.strokeColor,
+      fillColor: this.fillColor,
+      isFilled: this.isFilled
+    };
+  }
+
 
   abstract show(ctx: CanvasRenderingContext2D): void;
   abstract getName(): string;

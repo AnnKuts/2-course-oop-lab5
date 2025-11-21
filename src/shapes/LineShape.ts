@@ -13,4 +13,13 @@ export class LineShape extends Shape implements Line {
   getName(): string {
     return 'Line';
   }
+
+  static fromJSON(data: any): LineShape {
+    const line = new LineShape();
+    line.set(data.x1, data.y1, data.x2, data.y2);
+    line.setStrokeColor(data.strokeColor);
+    line.setFillColor(data.fillColor);
+    line.setFilled(data.isFilled);
+    return line;
+  }
 }

@@ -40,4 +40,13 @@ export class CubeShape extends Shape implements Line, Rectangle {
   getName(): string {
     return 'Cube';
   }
+
+  static fromJSON(data: any) {
+    const cube = new CubeShape();
+    cube.set(data.x1, data.y1, data.x2, data.y2);
+    cube.setStrokeColor(data.strokeColor);
+    cube.setFillColor(data.fillColor);
+    cube.setFilled(data.isFilled);
+    return cube;
+  }
 }
