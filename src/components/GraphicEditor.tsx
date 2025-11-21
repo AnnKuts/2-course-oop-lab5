@@ -24,16 +24,26 @@ const GraphicEditor: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTableOpen, setIsTableOpen] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode>(null);
-  const [currentShapeFactory, setCurrentShapeFactory] = useState<() => Shape>(() => () => new PointShape(0, 0));
+
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
+
+  const [currentShapeFactory, setCurrentShapeFactory] =
+    useState<() => Shape>(() => () => new PointShape(0, 0));
+
   const [strokeColor, setStrokeColor] = useState<string>('#000000');
   const [fillColor, setFillColor] = useState<string>('#ffff00');
   const [isFilled, setIsFilled] = useState<boolean>(false);
+
   const [tableData, setTableData] = useState<ShapeData[]>([]);
-  const [tablePosition, setTablePosition] = useState({x: window.innerWidth - 540, y: 140});
-  const [tableSize, setTableSize] = useState({width: 500, height: 500});
+  const [tablePosition, setTablePosition] =
+    useState({x: window.innerWidth - 540, y: 140});
+  const [tableSize, setTableSize] =
+    useState({width: 500, height: 500});
+
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
-  const [dragStart, setDragStart] = useState({x: 0, y: 0});
+  const [dragStart, setDragStart] =
+    useState({x: 0, y: 0});
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -48,7 +58,23 @@ const GraphicEditor: React.FC = () => {
     myTableRef.current.Subscribe(handleTableUpdate);
 
     Editor.setOnShapeDrawn((name, x1, y1, x2, y2) => {
-      myTableRef.current.Add(name, Math.round(x1), Math.round(y1), Math.round(x2), Math.round(y2));
+      myTableRef.current.Add(
+        name,
+        Math.round(x1),
+        Math.round(y1),
+        Math.round(x2),
+        Math.round(y2)
+      );
+    });
+
+    myTableRef.current.OnSelect((index) => {
+      setSelectedRow(index);
+      Editor.selectShape(index);
+    });
+
+    myTableRef.current.OnDelete((index) => {
+      Editor.deleteShape(index);
+      setSelectedRow(null);
     });
 
     return () => {
@@ -97,7 +123,10 @@ const GraphicEditor: React.FC = () => {
       (e.target as HTMLElement).closest('.table-panel-header')
     ) {
       setIsDragging(true);
-      setDragStart({x: e.clientX - tablePosition.x, y: e.clientY - tablePosition.y});
+      setDragStart({
+        x: e.clientX - tablePosition.x,
+        y: e.clientY - tablePosition.y
+      });
     }
   };
 
@@ -115,7 +144,7 @@ const GraphicEditor: React.FC = () => {
   const getMouseCoordinates = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!canvasRef.current) return {x: 0, y: 0};
     const rect = canvasRef.current.getBoundingClientRect();
-    return {x: e.clientX - rect.left, y: e.clientY - rect.top};
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -140,51 +169,28 @@ const GraphicEditor: React.FC = () => {
     Editor.onLBUp(x, y);
   };
 
-  const handlePointSelect = () => {
-    setCurrentShapeFactory(() => () => new PointShape(0, 0));
-    updateTitle('Point');
-  };
-
-  const handleLineSelect = () => {
-    setCurrentShapeFactory(() => () => new LineShape());
-    updateTitle('Line');
-  };
-
-  const handleRectSelect = () => {
-    setCurrentShapeFactory(() => () => new RectangleShape(0, 0, 0, 0));
-    updateTitle('Rectangle');
-  };
-
-  const handleEllipseSelect = () => {
-    setCurrentShapeFactory(() => () => new EllipseShape());
-    updateTitle('Ellipse');
-  };
-
-  const handleCubeSelect = () => {
-    setCurrentShapeFactory(() => () => new CubeShape());
-    updateTitle('Cube');
-  };
-
-  const handleLineOOSelect = () => {
-    setCurrentShapeFactory(() => () => new LineOOShape());
-    updateTitle('LineOO');
-  };
+  // -------- TOOL SELECTORS --------
+  const handlePointSelect = () => { setCurrentShapeFactory(() => () => new PointShape(0,0)); updateTitle('Point'); };
+  const handleLineSelect = () => { setCurrentShapeFactory(() => () => new LineShape()); updateTitle('Line'); };
+  const handleRectSelect = () => { setCurrentShapeFactory(() => () => new RectangleShape(0,0,0,0)); updateTitle('Rectangle'); };
+  const handleEllipseSelect = () => { setCurrentShapeFactory(() => () => new EllipseShape()); updateTitle('Ellipse'); };
+  const handleCubeSelect = () => { setCurrentShapeFactory(() => () => new CubeShape()); updateTitle('Cube'); };
+  const handleLineOOSelect = () => { setCurrentShapeFactory(() => () => new LineOOShape()); updateTitle('LineOO'); };
 
   const handleClear = () => {
     Editor.clear();
     myTableRef.current.Clear();
+    setSelectedRow(null);
   };
 
   const handleUndo = () => {
     Editor.undo();
     myTableRef.current.RemoveLast();
+    setSelectedRow(null);
   };
 
-  const handleTableToggle = () => {
-    setIsTableOpen(!isTableOpen);
-  };
+  const handleTableToggle = () => setIsTableOpen(!isTableOpen);
 
-  // ❗ SAVE JSON
   const handleSaveJSON = () => {
     const json = Editor.exportToJSON();
     const blob = new Blob([json], {type: 'application/json'});
@@ -210,7 +216,7 @@ const GraphicEditor: React.FC = () => {
       Editor.importFromJSON(json);
 
       myTableRef.current.Clear();
-      Editor.shapes.forEach(s => {
+      Editor.shapes.forEach((s) => {
         myTableRef.current.Add(
           s.getName(),
           Math.round(s.xs1),
@@ -219,40 +225,40 @@ const GraphicEditor: React.FC = () => {
           Math.round(s.ys2)
         );
       });
-    };
 
+      setSelectedRow(null);
+    };
     reader.readAsText(file);
   };
 
   const handleAbout = () => {
-    const aboutContent = (
+    setModalContent(
       <>
         <h4>Масив</h4>
         <p>динамічний з обмеженням N = {N}</p>
 
         <h4>Гумовий слід</h4>
-        <p>чорна пунктирна лінія</p>
+        <p>пунктир чорним</p>
 
         <h4>Прямокутник</h4>
-        <p>колір заповнення — жовтий</p>
+        <p>жовта заливка</p>
 
         <h4>Еліпс</h4>
         <p>без заливки</p>
       </>
     );
-    setModalContent(aboutContent);
     setIsModalOpen(true);
   };
 
   return (
     <div className="editor-container">
 
-      {/* hidden loader */}
+      {/* hidden file loader */}
       <input
         ref={fileInputRef}
         type="file"
         accept=".json"
-        style={{display: 'none'}}
+        style={{display:'none'}}
         onChange={handleLoadJSON}
       />
 
@@ -271,7 +277,7 @@ const GraphicEditor: React.FC = () => {
           onTableToggle={handleTableToggle}
           isTableOpen={isTableOpen}
 
-          // NEW:
+          // JSON SUPPORT
           onSaveJSON={handleSaveJSON}
           onLoadJSON={handleLoadJSONClick}
         />
@@ -326,7 +332,7 @@ const GraphicEditor: React.FC = () => {
               <table>
                 <thead>
                 <tr>
-                  <th>#</th>
+                  <th>№</th>
                   <th>Shape</th>
                   <th>X1</th>
                   <th>Y1</th>
@@ -334,9 +340,23 @@ const GraphicEditor: React.FC = () => {
                   <th>Y2</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 {tableData.map((shape: ShapeData, index: number) => (
-                  <tr key={index}>
+                  <tr
+                    key={index}
+                    className={selectedRow === index ? 'selected-row' : ''}
+
+                    onClick={() => {
+                      setSelectedRow(index);
+                      myTableRef.current.Select(index);
+                    }}
+
+                    onDoubleClick={() => {
+                      myTableRef.current.Delete(index);
+                      setSelectedRow(null);
+                    }}
+                  >
                     <td>{index + 1}</td>
                     <td>{shape.name}</td>
                     <td>{shape.x1}</td>
@@ -346,6 +366,7 @@ const GraphicEditor: React.FC = () => {
                   </tr>
                 ))}
                 </tbody>
+
               </table>
             </div>
 
@@ -353,6 +374,7 @@ const GraphicEditor: React.FC = () => {
               className="resize-handle"
               onMouseDown={handleResizeMouseDown}
             />
+
           </div>
         )}
       </div>

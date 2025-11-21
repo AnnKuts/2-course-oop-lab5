@@ -14,14 +14,20 @@ export class MyEditor {
   }
 
   private ctx: CanvasRenderingContext2D | null = null;
-  private shapes: Shape[] = [];
+  public shapes: Shape[] = [];
+
   private currentShape: Shape | null = null;
   private isDrawing = false;
   private startX = 0;
   private startY = 0;
   private savedImageData: ImageData | null = null;
   private N = 111;
-  private onShapeDrawnCallback?: (name: string, x1: number, y1: number, x2: number, y2: number) => void;
+
+  private selectedShapeIndex: number = -1;   // <<< НОВЕ
+
+  private onShapeDrawnCallback?: (
+    name: string, x1: number, y1: number, x2: number, y2: number
+  ) => void;
 
   setContext(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx;
@@ -38,7 +44,9 @@ export class MyEditor {
     this.startY = y;
     this.isDrawing = true;
 
-    this.savedImageData = this.ctx.getImageData(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.savedImageData = this.ctx.getImageData(
+      0, 0, this.ctx.canvas.width, this.ctx.canvas.height
+    );
   }
 
   onMouseMove(x: number, y: number) {
@@ -66,7 +74,9 @@ export class MyEditor {
 
     if (this.onShapeDrawnCallback) {
       const shapeName = this.currentShape.getName();
-      this.onShapeDrawnCallback(shapeName, this.startX, this.startY, x, y);
+      this.onShapeDrawnCallback(
+        shapeName, this.startX, this.startY, x, y
+      );
     }
 
     this.currentShape = null;
@@ -75,38 +85,62 @@ export class MyEditor {
     this.onPaint();
   }
 
-  getStartCoordinates() {
-    return { x: this.startX, y: this.startY };
-  }
-
-  setOnShapeDrawn(callback: (name: string, x1: number, y1: number, x2: number, y2: number) => void) {
-    this.onShapeDrawnCallback = callback;
-  }
-
   onPaint() {
     if (!this.ctx) return;
 
     const ctx = this.ctx;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    for (const shape of this.shapes) {
-      ctx.save();
-      shape.show(ctx);
-      ctx.restore();
+    for (let i = 0; i < this.shapes.length; i++) {
+      const shape = this.shapes[i];
+
+      if (i === this.selectedShapeIndex) {
+        ctx.save();
+
+        const oldStroke = (shape as any).strokeColor;
+        (shape as any).strokeColor = "red";
+
+        ctx.setLineDash([8, 4]);
+        ctx.lineWidth = 4;
+
+        shape.show(ctx);
+
+        (shape as any).strokeColor = oldStroke;
+
+        ctx.restore();
+      } else {
+        ctx.save();
+        shape.show(ctx);
+        ctx.restore();
+      }
+
     }
   }
 
-  clear() {
-    this.shapes = [];
+
+  selectShape(index: number) {
+    if (index < 0 || index >= this.shapes.length) {
+      this.selectedShapeIndex = -1;
+    } else {
+      this.selectedShapeIndex = index;
+    }
     this.onPaint();
   }
 
-  undo() {
-    if (this.shapes.length > 0) {
-      this.shapes.pop();
-      this.onPaint();
+  deleteShape(index: number) {
+    if (index < 0 || index >= this.shapes.length) return;
+
+    this.shapes.splice(index, 1);
+
+    if (this.selectedShapeIndex === index) {
+      this.selectedShapeIndex = -1;
+    } else if (this.selectedShapeIndex > index) {
+      this.selectedShapeIndex--;
     }
+
+    this.onPaint();
   }
+
 
   importFromJSON(jsonString: string) {
     const arr = JSON.parse(jsonString);
@@ -124,24 +158,32 @@ export class MyEditor {
   }
 
   exportToJSON(): string {
-    return JSON.stringify(this.shapes.map(s => s.toJSON()), null, 2);
+    return JSON.stringify(
+      this.shapes.map(s => s.toJSON()),
+      null,
+      2
+    );
   }
 
-  getShapes(): Shape[] {
-    return [...this.shapes];
+
+  setOnShapeDrawn(callback: (
+    name: string, x1: number, y1: number, x2: number, y2: number
+  ) => void) {
+    this.onShapeDrawnCallback = callback;
   }
 
-  loadShapes(shapes: Shape[], onShapeDrawn?: (name: string, x1: number, y1: number, x2: number, y2: number) => void) {
-    this.shapes = shapes;
-    
-    if (onShapeDrawn) {
-      for (const shape of shapes) {
-        const json = shape.toJSON();
-        onShapeDrawn(json.type, json.x1, json.y1, json.x2, json.y2);
-      }
-    }
-    
+  clear() {
+    this.shapes = [];
+    this.selectedShapeIndex = -1;
     this.onPaint();
+  }
+
+  undo() {
+    if (this.shapes.length > 0) {
+      this.shapes.pop();
+      this.selectedShapeIndex = -1;
+      this.onPaint();
+    }
   }
 }
 
