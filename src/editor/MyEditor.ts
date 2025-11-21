@@ -20,6 +20,7 @@ export class MyEditor {
   private startY = 0;
   private savedImageData: ImageData | null = null;
   private N = 111;
+  private onShapeDrawnCallback?: (name: string, x1: number, y1: number, x2: number, y2: number) => void;
 
   setContext(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx;
@@ -62,10 +63,24 @@ export class MyEditor {
       this.shapes.push(this.currentShape);
     }
 
+    // Викликаємо callback для оновлення таблиці
+    if (this.onShapeDrawnCallback) {
+      const shapeName = this.currentShape.getName();
+      this.onShapeDrawnCallback(shapeName, this.startX, this.startY, x, y);
+    }
+
     this.currentShape = null;
     this.isDrawing = false;
     this.savedImageData = null;
     this.onPaint();
+  }
+
+  getStartCoordinates() {
+    return { x: this.startX, y: this.startY };
+  }
+
+  setOnShapeDrawn(callback: (name: string, x1: number, y1: number, x2: number, y2: number) => void) {
+    this.onShapeDrawnCallback = callback;
   }
 
   onPaint() {

@@ -13,6 +13,8 @@ interface MenuBarProps {
   onCubeSelect: () => void;
   onLineOOSelect: () => void;
   onUndo: () => void;
+  onTableToggle: () => void;
+  isTableOpen: boolean;
 }
 
 const MenuBar: FC<MenuBarProps> = ({
@@ -22,7 +24,12 @@ const MenuBar: FC<MenuBarProps> = ({
                                      onRectSelect,
                                      onEllipseSelect,
                                      onClear,
-                                     onAbout, onCubeSelect, onLineOOSelect, onUndo
+                                     onAbout,
+                                     onCubeSelect,
+                                     onLineOOSelect,
+                                     onUndo,
+                                     onTableToggle,
+                                     isTableOpen
                                    }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
@@ -70,18 +77,26 @@ const MenuBar: FC<MenuBarProps> = ({
     onAbout();
     closeMenu();
   };
+
   const handleCubeClick = () => {
     onCubeSelect();
     closeMenu();
   };
+
   const handleLineOOClick = () => {
     onLineOOSelect();
     closeMenu();
   };
+
   const handleUndoClick = () => {
     onUndo();
     closeMenu();
   };
+
+  const handleViewClick = () => {
+    onTableToggle();
+  };
+
   return (
     <>
       <div className="menu-bar">
@@ -153,6 +168,15 @@ const MenuBar: FC<MenuBarProps> = ({
               </Button>
             </div>
           )}
+        </div>
+
+        <div className="menu-item">
+          <button
+            className={`menu-button ${isTableOpen ? 'active' : ''}`}
+            onClick={handleViewClick}
+          >
+            View
+          </button>
         </div>
 
         <div className="menu-item">

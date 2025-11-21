@@ -305,3 +305,99 @@ body {
     border: 5px solid transparent;
     border-bottom-color: #333;
 }
+.table-panel {
+    position: fixed;
+    top: 140px;
+    right: 20px;
+    width: 500px;
+    max-height: 500px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.table-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-panel-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.table-content {
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.table-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-content thead {
+    background: #f9f9f9;
+    position: sticky;
+    top: 0;
+}
+
+.table-content th,
+.table-content td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+.table-content th {
+    font-weight: 600;
+    background: #f0f0f0;
+}
+
+.table-content tbody tr:hover {
+    background: #f5f5f5;
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    color: #000;
+}
+.table-panel-header {
+  user-select: none;
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, transparent 50%, #999 50%);
+  cursor: nwse-resize;
+}
+
+.resize-handle:hover {
+  background: linear-gradient(135deg, transparent 50%, #666 50%);
+}
