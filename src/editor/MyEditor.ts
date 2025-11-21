@@ -1,6 +1,17 @@
 import { Shape } from '../shapes/Shape';
 
 export class MyEditor {
+  private static instance: MyEditor | null = null;
+
+  private constructor() {}
+
+  public static getInstance(): MyEditor {
+    if (!MyEditor.instance) {
+      MyEditor.instance = new MyEditor();
+    }
+    return MyEditor.instance;
+  }
+
   private ctx: CanvasRenderingContext2D | null = null;
   private shapes: Shape[] = [];
   private currentShape: Shape | null = null;
@@ -83,4 +94,4 @@ export class MyEditor {
   }
 }
 
-export const Editor = new MyEditor();
+export const Editor = MyEditor.getInstance();
