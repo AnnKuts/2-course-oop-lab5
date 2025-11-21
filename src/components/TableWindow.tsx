@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { MyTable } from '../editor/MyTable';
-import type { ShapeData } from '../editor/MyTable';
+import React, {useEffect, useState} from 'react';
+import {MyTable} from '../editor/MyTable';
+import type {ShapeData} from '../editor/MyTable';
 import '../styles/index.css';
 
 interface TableWindowProps {
@@ -9,7 +9,7 @@ interface TableWindowProps {
   myTable: MyTable;
 }
 
-const TableWindow: React.FC<TableWindowProps> = ({ isOpen, onClose, myTable }) => {
+const TableWindow: React.FC<TableWindowProps> = ({isOpen, onClose, myTable}) => {
   const [shapes, setShapes] = useState<ShapeData[]>([]);
 
   useEffect(() => {

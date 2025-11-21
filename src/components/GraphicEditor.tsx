@@ -144,7 +144,7 @@ const GraphicEditor: React.FC = () => {
   const getMouseCoordinates = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!canvasRef.current) return {x: 0, y: 0};
     const rect = canvasRef.current.getBoundingClientRect();
-    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    return {x: e.clientX - rect.left, y: e.clientY - rect.top};
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -169,13 +169,30 @@ const GraphicEditor: React.FC = () => {
     Editor.onLBUp(x, y);
   };
 
-  // -------- TOOL SELECTORS --------
-  const handlePointSelect = () => { setCurrentShapeFactory(() => () => new PointShape(0,0)); updateTitle('Point'); };
-  const handleLineSelect = () => { setCurrentShapeFactory(() => () => new LineShape()); updateTitle('Line'); };
-  const handleRectSelect = () => { setCurrentShapeFactory(() => () => new RectangleShape(0,0,0,0)); updateTitle('Rectangle'); };
-  const handleEllipseSelect = () => { setCurrentShapeFactory(() => () => new EllipseShape()); updateTitle('Ellipse'); };
-  const handleCubeSelect = () => { setCurrentShapeFactory(() => () => new CubeShape()); updateTitle('Cube'); };
-  const handleLineOOSelect = () => { setCurrentShapeFactory(() => () => new LineOOShape()); updateTitle('LineOO'); };
+  const handlePointSelect = () => {
+    setCurrentShapeFactory(() => () => new PointShape(0, 0));
+    updateTitle('Point');
+  };
+  const handleLineSelect = () => {
+    setCurrentShapeFactory(() => () => new LineShape());
+    updateTitle('Line');
+  };
+  const handleRectSelect = () => {
+    setCurrentShapeFactory(() => () => new RectangleShape(0, 0, 0, 0));
+    updateTitle('Rectangle');
+  };
+  const handleEllipseSelect = () => {
+    setCurrentShapeFactory(() => () => new EllipseShape());
+    updateTitle('Ellipse');
+  };
+  const handleCubeSelect = () => {
+    setCurrentShapeFactory(() => () => new CubeShape());
+    updateTitle('Cube');
+  };
+  const handleLineOOSelect = () => {
+    setCurrentShapeFactory(() => () => new LineOOShape());
+    updateTitle('LineOO');
+  };
 
   const handleClear = () => {
     Editor.clear();
@@ -253,12 +270,11 @@ const GraphicEditor: React.FC = () => {
   return (
     <div className="editor-container">
 
-      {/* hidden file loader */}
       <input
         ref={fileInputRef}
         type="file"
         accept=".json"
-        style={{display:'none'}}
+        style={{display: 'none'}}
         onChange={handleLoadJSON}
       />
 
@@ -276,8 +292,6 @@ const GraphicEditor: React.FC = () => {
           onUndo={handleUndo}
           onTableToggle={handleTableToggle}
           isTableOpen={isTableOpen}
-
-          // JSON SUPPORT
           onSaveJSON={handleSaveJSON}
           onLoadJSON={handleLoadJSONClick}
         />

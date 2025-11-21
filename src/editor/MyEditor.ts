@@ -1,10 +1,11 @@
-import { Shape } from '../shapes/Shape';
-import { ShapeClasses } from "../shapes/ShapeClasses";
+import {Shape} from '../shapes/Shape';
+import {ShapeClasses} from "../shapes/ShapeClasses";
 
 export class MyEditor {
   private static instance: MyEditor | null = null;
 
-  private constructor() {}
+  private constructor() {
+  }
 
   public static getInstance(): MyEditor {
     if (!MyEditor.instance) {

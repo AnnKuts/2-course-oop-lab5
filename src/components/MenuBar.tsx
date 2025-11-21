@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import { useState } from 'react';
+import type {FC} from 'react';
+import {useState} from 'react';
 import Button from './Button.tsx';
 
 interface MenuBarProps {
@@ -114,42 +114,60 @@ const MenuBar: FC<MenuBarProps> = ({
             <div className="dropdown">
               <Button
                 className={`dropdown-item ${currentTool === 'Point' ? 'selected' : ''}`}
-                onClick={() => { onPointSelect(); closeMenu(); }}
+                onClick={() => {
+                  onPointSelect();
+                  closeMenu();
+                }}
               >
                 Point
               </Button>
 
               <Button
                 className={`dropdown-item ${currentTool === 'Line' ? 'selected' : ''}`}
-                onClick={() => { onLineSelect(); closeMenu(); }}
+                onClick={() => {
+                  onLineSelect();
+                  closeMenu();
+                }}
               >
                 Line
               </Button>
 
               <Button
                 className={`dropdown-item ${currentTool === 'Rectangle' ? 'selected' : ''}`}
-                onClick={() => { onRectSelect(); closeMenu(); }}
+                onClick={() => {
+                  onRectSelect();
+                  closeMenu();
+                }}
               >
                 Rectangle
               </Button>
 
               <Button
                 className={`dropdown-item ${currentTool === 'Ellipse' ? 'selected' : ''}`}
-                onClick={() => { onEllipseSelect(); closeMenu(); }}
+                onClick={() => {
+                  onEllipseSelect();
+                  closeMenu();
+                }}
               >
                 Ellipse
               </Button>
 
               <Button
                 className={`dropdown-item ${currentTool === 'Cube' ? 'selected' : ''}`}
-                onClick={() => { onCubeSelect(); closeMenu(); }}
+                onClick={() => {
+                  onCubeSelect();
+                  closeMenu();
+                }}
               >
                 Cube
               </Button>
 
               <Button
                 className={`dropdown-item ${currentTool === 'LineOO' ? 'selected' : ''}`}
-                onClick={() => { onLineOOSelect(); closeMenu(); }}
+                onClick={() => {
+                  onLineOOSelect();
+                  closeMenu();
+                }}
               >
                 LineOO
               </Button>
@@ -177,7 +195,10 @@ const MenuBar: FC<MenuBarProps> = ({
 
           {openMenu === 'about' && (
             <div className="dropdown">
-              <Button className="dropdown-item" onClick={() => { onAbout(); closeMenu(); }}>
+              <Button className="dropdown-item" onClick={() => {
+                onAbout();
+                closeMenu();
+              }}>
                 Show info
               </Button>
             </div>

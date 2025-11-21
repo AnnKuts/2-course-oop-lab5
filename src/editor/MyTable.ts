@@ -13,7 +13,7 @@ export class MyTable {
   private deleteListeners: Array<(index: number, shape: ShapeData) => void> = [];
 
   public Add(name: string, x1: number, y1: number, x2: number, y2: number): void {
-    const newShape: ShapeData = { name, x1, y1, x2, y2 };
+    const newShape: ShapeData = {name, x1, y1, x2, y2};
     this.shapes.push(newShape);
     this.notifyListeners();
   }

@@ -20,26 +20,26 @@ interface ToolbarProps {
 }
 
 const Toolbar: React.FC<ToolbarProps> = ({
-  onPointSelect,
-  onLineSelect,
-  onRectSelect,
-  onEllipseSelect,
-  onCubeSelect,
-  onLineOOSelect,
-  onUndo,
-  onClear,
-  strokeColor,
-  onStrokeColorChange,
-  fillColor,
-  onFillColorChange,
-  isFilled,
-  onFilledChange
-}) => {
+                                           onPointSelect,
+                                           onLineSelect,
+                                           onRectSelect,
+                                           onEllipseSelect,
+                                           onCubeSelect,
+                                           onLineOOSelect,
+                                           onUndo,
+                                           onClear,
+                                           strokeColor,
+                                           onStrokeColorChange,
+                                           fillColor,
+                                           onFillColorChange,
+                                           isFilled,
+                                           onFilledChange
+                                         }) => {
   return (
     <div className="toolbar">
       {onStrokeColorChange && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8 }}>
-          <label style={{ fontSize: 12 }}>Stroke:</label>
+        <div style={{display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8}}>
+          <label style={{fontSize: 12}}>Stroke:</label>
           <input
             type="color"
             value={strokeColor}
@@ -49,8 +49,8 @@ const Toolbar: React.FC<ToolbarProps> = ({
         </div>
       )}
       {onFillColorChange && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8 }}>
-          <label style={{ fontSize: 12 }}>Fill:</label>
+        <div style={{display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8}}>
+          <label style={{fontSize: 12}}>Fill:</label>
           <input
             type="color"
             value={fillColor}
@@ -60,7 +60,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         </div>
       )}
       {onFilledChange && (
-        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, paddingRight: 8 }}>
+        <label style={{display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, paddingRight: 8}}>
           <input
             type="checkbox"
             checked={isFilled}
@@ -71,42 +71,42 @@ const Toolbar: React.FC<ToolbarProps> = ({
       )}
       <Tooltip text="Point">
         <Button onClick={onPointSelect}>
-          <img src="/point.png" alt="Point" />
+          <img src="/point.png" alt="Point"/>
         </Button>
       </Tooltip>
       <Tooltip text="Line">
         <Button onClick={onLineSelect}>
-          <img src="/line.png" alt="Line" />
+          <img src="/line.png" alt="Line"/>
         </Button>
       </Tooltip>
       <Tooltip text="Rectangle">
         <Button onClick={onRectSelect}>
-          <img src="/rect.png" alt="Rectangle" />
+          <img src="/rect.png" alt="Rectangle"/>
         </Button>
       </Tooltip>
       <Tooltip text="Ellipse">
         <Button onClick={onEllipseSelect}>
-          <img src="/ellipse.png" alt="Ellipse" />
+          <img src="/ellipse.png" alt="Ellipse"/>
         </Button>
       </Tooltip>
       <Tooltip text="Cube">
         <Button onClick={onCubeSelect}>
-          <img src="/cube.png" alt="Cube" />
+          <img src="/cube.png" alt="Cube"/>
         </Button>
       </Tooltip>
       <Tooltip text="LineOO">
         <Button onClick={onLineOOSelect}>
-          <img src="/lineOO.png" alt="LineOO" />
+          <img src="/lineOO.png" alt="LineOO"/>
         </Button>
       </Tooltip>
       <Tooltip text="Undo">
         <Button onClick={onUndo}>
-          <img src="/back.png" alt="Clear" />
+          <img src="/back.png" alt="Clear"/>
         </Button>
       </Tooltip>
       <Tooltip text="Clear">
         <Button onClick={onClear}>
-<img src="/clear.png" alt="Clear" />
+          <img src="/clear.png" alt="Clear"/>
         </Button>
       </Tooltip>
     </div>

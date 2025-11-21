@@ -8,13 +8,13 @@ interface CanvasProps {
 }
 
 const Canvas: React.FC<CanvasProps> = ({
-  width,
-  height,
-  onMouseDown,
-  onMouseUp,
-  onMouseMove,
-  canvasRef
-}) => {
+                                         width,
+                                         height,
+                                         onMouseDown,
+                                         onMouseUp,
+                                         onMouseMove,
+                                         canvasRef
+                                       }) => {
   return (
     <canvas
       ref={canvasRef}

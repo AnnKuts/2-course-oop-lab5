@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type {FC, ReactNode} from 'react';
 import Button from './Button.tsx';
 
 interface ModalWindowProps {
@@ -10,12 +10,12 @@ interface ModalWindowProps {
 }
 
 const ModalWindow: FC<ModalWindowProps> = ({
-                                                   isOpen,
-                                                   onClose,
-                                                   title,
-                                                   children,
-                                                   className = '',
-                                                 }) => {
+                                             isOpen,
+                                             onClose,
+                                             title,
+                                             children,
+                                             className = '',
+                                           }) => {
   if (!isOpen) return null;
 
   return (
